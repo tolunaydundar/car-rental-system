@@ -24,33 +24,33 @@ namespace Business.Concrete
         public IResult Add(Car car)
         {
             _carDal.Add(car);
-            return new SuccessResult(Messages.EntityAdded);
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult(Messages.EntityDeleted);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.EntityListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId), Messages.EntityListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId));
         }
 
         public IDataResult<List<Car>> GetAllByCategoryId(int categoryId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.CategoryId == categoryId), Messages.EntityListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.CategoryId == categoryId));
         }
 
         public IDataResult<List<Car>> GetAllByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == colorId), Messages.EntityListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == colorId));
         }
 
         public IDataResult<List<Car>> GetAllByDailyPrice(int min, int max)
@@ -60,23 +60,23 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAllByModelYear(int min, int max)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear >= min && p.ModelYear <= max), Messages.EntityListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear >= min && p.ModelYear <= max));
         }
 
         public IDataResult<Car> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == carId), Messages.EntityListed);
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == carId));
         }
 
-        public IDataResult<List<CarDetailDTO>> GetCarDetails()
+        public IDataResult<List<CarDetailDTO>> GetCarDetails(int carId)
         {
-            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(), Messages.EntityListed);
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(p => p.Id == carId));
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new SuccessResult(Messages.EntityUpdated);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }

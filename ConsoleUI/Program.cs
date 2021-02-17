@@ -9,16 +9,13 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
             CarManager carManager = new CarManager(new EfCarDal());
-
-
-            foreach (var car in carManager.GetCarDetails().Data)
-            {
-                Console.WriteLine($"ID: {car.Id}\n" +
-                    $"Name: {car.Brand} {car.Model} {car.ModelYear} {car.Category}\n" +
-                    $"Price: {car.DailyPrice}\n" +
-                    $"Description: {car.Description}\n");
-            }
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            UserManager userManager = new UserManager(new EfUserDal());
         }
     }
 }

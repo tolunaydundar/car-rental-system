@@ -9,9 +9,9 @@ namespace Business.Abstract
     public interface IColorService
     {
         IResult Add(Color color);
-        IResult Delete(Color Color);
+        IResult Delete(Color color);
         IDataResult<List<Color>> GetAll();
-        IDataResult<Color> GetById(int ColorId);
-        IResult Update(Color Color);
+        IDataResult<Color> GetById(int colorId);
+        IResult Update(Color color);
     }
 }
