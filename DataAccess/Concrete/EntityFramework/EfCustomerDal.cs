@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (CarRentalContext context = new CarRentalContext())
             {
-                var result = from customer in context.Customers
+                var result = from customer in filter == null ? context.Customers : context.Customers.Where(filter)
                              join user in context.Users on customer.UserId equals user.Id
                              select new CustomerDetailDTO
                              {
