@@ -10,6 +10,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    //TODO: Add rules and handle exceptions
     public class ColorManager : IColorService
     {
         IColorDal _colorDal;
@@ -22,13 +23,13 @@ namespace Business.Concrete
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
-            return new SuccessResult(Messages.CategoryAdded);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
-            return new SuccessResult(Messages.CategoryDeleted);
+            return new SuccessResult(Messages.ColorDeleted);
         }
 
         public IDataResult<List<Color>> GetAll()
@@ -44,7 +45,7 @@ namespace Business.Concrete
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
-            return new SuccessResult(Messages.CategoryDeleted);
+            return new SuccessResult(Messages.ColorUpdated);
         }
     }
 }

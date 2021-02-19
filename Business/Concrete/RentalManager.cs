@@ -11,6 +11,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    //TODO: Add rules and handle exceptions
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
@@ -69,15 +70,12 @@ namespace Business.Concrete
 
         public IResult IsAvailable(int carId)
         {
-           if (_rentalDal.GetRentalDetails(p => p.CarId == carId && p.ReturnDate == null).Count > 0)
+            if (_rentalDal.GetRentalDetails(p => p.CarId == carId && p.ReturnDate == null).Count > 0)
             {
                 return new ErrorResult(Messages.RentalCarIsRented);
             }
 
-            else
-            {
-                return new SuccessResult();
-            }
+            return new SuccessResult();
         }
 
         public IResult ReturnCar(int carId)
@@ -90,10 +88,7 @@ namespace Business.Concrete
                 return new SuccessResult(Messages.RentalCarReturned);
             }
 
-            else
-            {
-                return new ErrorResult(Messages.RentalCarIsNotRented);
-            }
+            return new ErrorResult(Messages.RentalCarIsNotRented);
         }
 
         public IResult Update(Rental rental)

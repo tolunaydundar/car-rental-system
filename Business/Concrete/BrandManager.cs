@@ -10,6 +10,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    //TODO: Add rules and handle exceptions
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;

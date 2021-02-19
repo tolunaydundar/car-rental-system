@@ -12,6 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    //TODO: Add rules and handle exceptions
     public class CarManager : ICarService
     {
         ICarDal _carDal;

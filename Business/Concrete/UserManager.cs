@@ -10,6 +10,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    //TODO: Add rules and handle exceptions
     public class UserManager : IUserService
     {
         IUserDal _userDal;
@@ -54,7 +55,7 @@ namespace Business.Concrete
         public IResult Update(User user)
         {
             _userDal.Update(user);
-            return new SuccessResult(Messages.UserDeleted);
+            return new SuccessResult(Messages.UserUpdated);
         }
     }
 }
