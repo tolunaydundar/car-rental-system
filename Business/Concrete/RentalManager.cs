@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -11,7 +13,6 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    //TODO: Add rules and handle exceptions
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
@@ -21,6 +22,7 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             var result = IsAvailable(rental.CarId);

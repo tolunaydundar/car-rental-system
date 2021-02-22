@@ -53,5 +53,6 @@ namespace Business.Constants
 
         public static string CannotBeEmpty = "This area cannot be empty.";
         public static string UnderMaintenance = "This service is under maintenance.";
+        public static string ValidEmail = "Please input a valid email address";
     }
 }

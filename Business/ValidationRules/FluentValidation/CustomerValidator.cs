@@ -14,6 +14,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(customer => customer.Id).NotEmpty();
             RuleFor(customer => customer.UserId).NotEmpty();
+            RuleFor(customer => customer.CompanyName).Length(2, 40);
         }
     }
 }

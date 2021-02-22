@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -10,7 +12,6 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    //TODO: Add rules and handle exceptions
     public class CategoryManager : ICategoryService
     {
         ICategoryDal _categoryDal;
@@ -20,6 +21,7 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
         }
 
+        [ValidationAspect(typeof(CategoryValidator))]
         public IResult Add(Category category)
         {
             _categoryDal.Add(category);

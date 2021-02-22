@@ -12,6 +12,8 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(category => category.Id).NotEmpty();
             RuleFor(category => category.Name).NotEmpty();
+            RuleFor(category => category.Name).Length(2, 40);
+            RuleFor(category => category.Description).Length(2, 100);
         }
     }
 }
